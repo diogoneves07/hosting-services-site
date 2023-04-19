@@ -1,8 +1,6 @@
-# Sistema de controle de clientes - VueJS❤️
+# Simulação de site de hospedagem - VueJS❤️
 
-🎉 Simples, bonito e eficiente!🎉.
-
-Esse projeto foi construído usando várias ferramentas incríveis como
+Esse projeto está sendo construído usando várias ferramentas incríveis como
 Vite, VueJS, Vuetify, Vitest, Cypress, Commitizen, Husky
 e outras tão importantes quanto as mencionadas!
 

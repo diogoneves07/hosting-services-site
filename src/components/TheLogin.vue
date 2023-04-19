@@ -49,7 +49,7 @@ import CompanyLogoCentered from './CompanyLogoCentered.vue'
 
 .link-to-create-account {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   margin: 50px;
 }
 .link-to-create-account a {
