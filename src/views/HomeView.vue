@@ -33,13 +33,20 @@ import CompanyLogoCentered from '@/components/CompanyLogoCentered.vue'
   left: 0;
   top: 0;
   width: 100%;
-  padding: 15px 50px 20px 25px;
+  padding: 15px 20px 20px 0px;
   background-color: #f4f4f4;
   height: 85px;
   z-index: 9999;
 }
+@media screen and (min-width: 500px) {
+  .main-header-container {
+    padding: 15px 25px 20px 25px;
+  }
+}
 .logo {
   float: left;
+  position: relative;
+  left: -16px;
 }
 .account {
   width: 50px;
@@ -56,8 +63,14 @@ import CompanyLogoCentered from '@/components/CompanyLogoCentered.vue'
 .text {
   text-align: left !important;
   float: left;
-  min-width: 680px;
   max-width: 100%;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 800px) {
+  .text {
+    min-width: 750px;
+  }
 }
 .text h2 {
   font-size: 30px;

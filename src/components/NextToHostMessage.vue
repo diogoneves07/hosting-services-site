@@ -19,10 +19,16 @@ const props = defineProps<{ subtitle?: string }>()
 .header {
   text-align: center;
   padding: 20px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
 }
 .header h2 {
   text-align: center;
   font-size: 30px;
+  max-width: 80%;
+  min-width: 380px;
 }
 .header h2 strong {
   float: left;

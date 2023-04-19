@@ -5,6 +5,7 @@ import NextToHostMessage from '@/components/NextToHostMessage.vue'
 
 <template>
   <NextToHostMessage subtitle="Escolha seu plano" />
+
   <div class="services">
     <HostService></HostService>
     <HostService price="499" :isPopular="true"></HostService>
