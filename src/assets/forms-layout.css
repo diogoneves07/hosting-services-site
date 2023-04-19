@@ -1,0 +1,158 @@
+.forms-layout {
+  text-align: left;
+  background-color: var(--dark-background-color);
+  border-radius: 5px;
+  margin: 0;
+  transform: translateZ(0);
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid #d5d5d5;
+}
+@media screen and (min-width: 700px) {
+  .forms-layout {
+    padding: 20px;
+    width: 600px;
+  }
+}
+
+.forms-layout * {
+  transition: all ease-in-out 1s;
+}
+
+.forms-layout::before,
+.forms-layout::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+@keyframes forms-layout-rotate-borders {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+/* Conic Gradient Animation */
+.forms-layout::before {
+  animation: 20s forms-layout-rotate-borders ease-in-out infinite;
+  width: 100%;
+  height: 100%;
+  background-color: #f00843;
+}
+
+/* Inner Square */
+.forms-layout::after {
+  inset: 0;
+  padding: 2px;
+  border-radius: 0px;
+  background-clip: content-box;
+  background-color: var(--dark-background-color);
+}
+
+.forms-layout legend {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px 0px;
+}
+
+.forms-layout label {
+  box-sizing: border-box;
+  margin: 20px;
+  display: grid;
+  align-items: center;
+  font-size: 17px;
+}
+
+.forms-layout label > p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  padding: 10px 5%;
+  font-size: 15px;
+  margin: 0;
+  color: rgb(189, 9, 9);
+}
+.forms-layout label > span {
+  font-size: 14px;
+  margin-left: 25px;
+}
+.forms-layout fieldset {
+  text-align: left;
+  margin: 0;
+  border: 0;
+}
+
+.forms-layout input,
+.forms-layout textarea,
+.forms-layout select {
+  margin: 20px;
+  padding: 28px;
+  border: 0px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  font-size: 17px;
+}
+
+.forms-layout input {
+  height: 50px;
+}
+
+.forms-layout select {
+  width: 200px;
+  padding: 0 20px;
+  height: 50px;
+  background-color: var(--dark-background-color);
+}
+
+.forms-layout textarea {
+  height: 120px;
+}
+
+.btn-right {
+  text-align: right;
+  margin-right: 30px;
+}
+
+.forms-layout button {
+  margin: 20px 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border-width: 1px 0px;
+  border-style: solid;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+.btn-border-green {
+  border-color: green;
+}
+
+.btn-border-red {
+  border-color: red;
+}
+
+.btn-border-blue {
+  border-color: blue;
+}
+
+.btn-login-container {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+}
+.btn-login-container button {
+  background-color: var(--links-color);
+  width: 300px;
+  padding: 15px;
+  color: #dcdcdc;
+  font-size: 20px;
+  border: 0px;
+}
+.btn-login-container i {
+  color: #dcdcdc;
+}
