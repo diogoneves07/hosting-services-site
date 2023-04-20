@@ -1,31 +1,40 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import DefaultButton from './DefaultButton.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const props = defineProps<{
   show?: boolean
   price?: string
   isPopular?: boolean
   isSelected?: boolean
+  onSelected?: () => void
 }>()
+
+const priceIsNumber = !Number.isNaN(parseFloat(props.price || ''))
 
 let show = ref(props.show || false)
 
 function toggleDisplay() {
   show.value = !show.value
 }
+function onSelected() {
+  props.onSelected && props.onSelected()
+  router.push('/cadastro')
+}
 </script>
 
 <template>
   <VCard class="mx-auto card-container" max-width="344">
-    <span v-if="props.isPopular" class="more-used">MAIS USADO</span>
-    <span v-if="props.isSelected" class="more-used selected">PLANO ESCOLHIDO</span>
+    <span v-if="isPopular" class="more-used">MAIS USADO</span>
+    <span v-if="isSelected" class="more-used selected">PLANO ESCOLHIDO</span>
 
     <VCardTitle> <h3 class="title">Hospedagem 1</h3> </VCardTitle>
 
     <strong class="price">
-      <span v-if="props.price">R$</span>{{ props.price || 'Grátis'
-      }}<span v-if="props.price">/mês</span></strong
+      <span v-if="priceIsNumber">R$</span>{{ price }}<span v-if="priceIsNumber">/mês</span></strong
     >
 
     <span class="subtitle"> Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
@@ -34,11 +43,11 @@ function toggleDisplay() {
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
     </span>
 
-    <DefaultButton v-if="!props.isSelected" class="get-service-btn">
+    <DefaultButton v-if="!isSelected" class="get-service-btn" @click="onSelected">
       ESCOLHER ESSE PLANO
     </DefaultButton>
 
-    <DefaultButton v-if="props.isSelected" class="toggle-service-btn">TROCAR PLANO </DefaultButton>
+    <DefaultButton v-if="isSelected" class="toggle-service-btn">TROCAR PLANO </DefaultButton>
 
     <VCardActions class="actions">
       <VBtn color="orange-lighten-2" variant="text" @click="toggleDisplay()"> Ver mais... </VBtn>

@@ -3,12 +3,18 @@ import '@/assets/forms-layout.css'
 
 import HostService from '@/components/HostService.vue'
 import NextToHostMessage from '@/components/NextToHostMessage.vue'
+import { getHostServiceSelected } from '@/lib/host-service'
 import { saveUserToken } from '@/lib/user-token'
 
 import { reactive, toRaw } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const hostServicePrice = getHostServiceSelected() || ''
+
+if (hostServicePrice === '') {
+  router.push('/')
+}
 
 const user = reactive({
   email: '',
@@ -37,7 +43,7 @@ const signup = async () => {
 
   <div class="register">
     <div class="service-selected">
-      <HostService :is-selected="true"></HostService>
+      <HostService :price="hostServicePrice" :is-selected="true"></HostService>
     </div>
 
     <form class="forms-layout form-register" @submit.prevent="signup">
