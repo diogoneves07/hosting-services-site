@@ -47,7 +47,9 @@ function onSelected() {
       ESCOLHER ESSE PLANO
     </DefaultButton>
 
-    <DefaultButton v-if="isSelected" class="toggle-service-btn">TROCAR PLANO </DefaultButton>
+    <DefaultButton v-if="isSelected" class="toggle-service-btn" @click="() => router.push('/')"
+      >TROCAR PLANO
+    </DefaultButton>
 
     <VCardActions class="actions">
       <VBtn color="orange-lighten-2" variant="text" @click="toggleDisplay()"> Ver mais... </VBtn>
