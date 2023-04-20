@@ -9,6 +9,14 @@
       "id": 2,
       "username": "user2",
       "password": "abcdef"
+    },
+    {
+      "id": 3,
+      "email": "",
+      "password": "",
+      "name": "Diogo neves",
+      "tel": "",
+      "siteName": ""
     }
   ]
 }

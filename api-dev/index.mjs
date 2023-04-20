@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import cors from 'cors'
 
 const server = jsonServer.create()
-const router = jsonServer.router('db.json')
+const router = jsonServer.router('./api-dev/db.json')
 const middlewares = jsonServer.defaults()
 
 const SECRET_KEY = 'secret'
@@ -13,7 +13,7 @@ server.use(cors())
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 
-server.post('/auth/login', (req, res) => {
+server.post('/login', (req, res) => {
   const { email, password } = req.body
   const user = router.db.get('users').find({ email, password }).value()
   console.log(email, password)
@@ -25,11 +25,11 @@ server.post('/auth/login', (req, res) => {
   return res.json({ token })
 })
 
-server.post('/auth/register', (req, res) => {
-  const { email, password } = req.body
+server.post('/register', (req, res) => {
+  const { email, password, name, tel, siteName } = req.body
   const id = router.db.get('users').size().value() + 1
 
-  router.db.get('users').push({ id, email, password }).write()
+  router.db.get('users').push({ id, email, password, name, tel, siteName }).write()
 
   const token = jwt.sign({ sub: id }, SECRET_KEY)
   return res.json({ token })

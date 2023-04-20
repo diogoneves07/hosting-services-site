@@ -3,28 +3,33 @@ import '@/assets/forms-layout.css'
 
 import HostService from '@/components/HostService.vue'
 import NextToHostMessage from '@/components/NextToHostMessage.vue'
-/*
+import { saveUserToken } from '@/lib/user-token'
 
- const signup = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/auth/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: state.username,
-            email: state.email,
-            password: state.password,
-          }),
-        });
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
-        router.push('/dashboard');
-      } catch (err) {
-        console.error(err);
-      }
-    };
+import { reactive, toRaw } from 'vue'
+import { useRouter } from 'vue-router'
 
-*/
+const router = useRouter()
+
+const user = reactive({
+  email: '',
+  password: '',
+  name: '',
+  tel: '',
+  siteName: ''
+})
+
+const signup = async () => {
+  const response = await fetch('http://localhost:3000/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(toRaw(user))
+  })
+  const data = await response.json()
+  if (data.token) {
+    saveUserToken(data.token)
+    router.push('/dashboard')
+  }
+}
 </script>
 
 <template>
@@ -35,7 +40,7 @@ import NextToHostMessage from '@/components/NextToHostMessage.vue'
       <HostService :is-selected="true"></HostService>
     </div>
 
-    <form class="forms-layout form-register">
+    <form class="forms-layout form-register" @submit.prevent="signup">
       <fieldset>
         <header>
           <legend>Dados pessoais</legend>
@@ -44,22 +49,22 @@ import NextToHostMessage from '@/components/NextToHostMessage.vue'
 
         <label>
           Nome completo:
-          <input type="text" placeholder="Insira seu nome" />
+          <input type="text" v-model="user.name" placeholder="Insira seu nome" />
         </label>
 
         <label>
           Celular:
-          <input type="tel" placeholder="Insira seu número" />
+          <input type="tel" v-model="user.tel" placeholder="Insira seu número" />
         </label>
 
         <label>
           E-mail:
-          <input type="email" placeholder="Insira seu e-mail" />
+          <input type="email" v-model="user.email" placeholder="Insira seu e-mail" />
         </label>
 
         <label>
           Senha:
-          <input type="password" placeholder="Insira sua senha" />
+          <input type="password" v-model="user.password" placeholder="Insira sua senha" />
         </label>
 
         <label>
@@ -75,14 +80,14 @@ import NextToHostMessage from '@/components/NextToHostMessage.vue'
           </header>
           <label>
             Nome do seu site:
-            <input type="text" placeholder="Insira o nome do site" />
+            <input type="text" v-model="user.siteName" placeholder="Insira o nome do site" />
             <span>Exatamente igual ao título do seu site</span>
           </label>
 
           <VDivider></VDivider>
 
           <label class="terms-checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" checked />
 
             <span>
               Ao concluir com seu cadastro você concorda com nossos
