@@ -1,11 +1,13 @@
+const key = 'token'
+
 export function saveUserToken(value: string) {
-  localStorage.setItem('token', value)
+  localStorage.setItem(key, value)
 }
 
 export function getUserToken(): false | string {
-  return localStorage.getItem('token') || false
+  return localStorage.getItem(key) || false
 }
 
 export function deleteUserToken() {
-  localStorage.removeItem('token')
+  localStorage.removeItem(key)
 }
