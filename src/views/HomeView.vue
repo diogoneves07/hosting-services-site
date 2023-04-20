@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import CompanyLogoCentered from '@/components/CompanyLogoCentered.vue'
+import { getUserToken } from '../lib/user-token'
+import { useRouter } from 'vue-router'
+
+if (getUserToken() === false) {
+  useRouter().push('/login')
+}
 </script>
 
 <template>

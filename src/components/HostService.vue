@@ -24,9 +24,8 @@ function toggleDisplay() {
     <VCardTitle> <h3 class="title">Hospedagem 1</h3> </VCardTitle>
 
     <strong class="price">
-      <span v-if="props.price">R$</span>
-      {{ props.price || 'Grátis' }}
-      <span v-if="props.price">/mês</span></strong
+      <span v-if="props.price">R$</span>{{ props.price || 'Grátis'
+      }}<span v-if="props.price">/mês</span></strong
     >
 
     <span class="subtitle"> Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>

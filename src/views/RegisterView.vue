@@ -3,6 +3,28 @@ import '@/assets/forms-layout.css'
 
 import HostService from '@/components/HostService.vue'
 import NextToHostMessage from '@/components/NextToHostMessage.vue'
+/*
+
+ const signup = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: state.username,
+            email: state.email,
+            password: state.password,
+          }),
+        });
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        router.push('/dashboard');
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+*/
 </script>
 
 <template>
