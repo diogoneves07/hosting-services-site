@@ -79,7 +79,7 @@ async function login() {
   </form>
 
   <div class="link-to-create-account">
-    <span>Ainda não tem conta? <a href="/planos">Cadastre-se</a></span>
+    <span>Ainda não tem conta? <a href="/">Cadastre-se</a></span>
   </div>
 </template>
 
