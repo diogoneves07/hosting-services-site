@@ -107,7 +107,7 @@ const signup = async () => {
 
         <div class="btn-login-container">
           <button type="submit">
-            <VIcon icon="mdi-login-variant"></VIcon>
+            <VIcon icon="mdi-account-arrow-right-outline"></VIcon>
             Criar conta
           </button>
         </div>
