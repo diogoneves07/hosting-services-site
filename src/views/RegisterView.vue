@@ -121,7 +121,7 @@ async function signup() {
 }
 .form-register {
   display: inline-block;
-  margin: 0 40px 40px 40px;
+  margin: 0 20px 40px 20px;
 }
 .service-selected {
   display: inline-block;
