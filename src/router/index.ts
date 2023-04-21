@@ -11,13 +11,13 @@ const router = createRouter({
     {
       path: '/',
       name: '',
-      component: HostServicesView
+      component: LoginView
     },
 
     {
-      path: '/login',
-      name: 'login',
-      component: LoginView
+      path: '/planos',
+      name: 'planos',
+      component: HostServicesView
     },
     {
       path: '/dashboard',

@@ -13,7 +13,7 @@ server.use(cors())
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 
-server.post('/login', (req, res) => {
+server.post('/auth/login', (req, res) => {
   const { email, password } = req.body
   const user = router.db.get('users').find({ email, password }).value()
   console.log(email, password)
@@ -25,7 +25,7 @@ server.post('/login', (req, res) => {
   return res.json({ token })
 })
 
-server.post('/register', (req, res) => {
+server.post('/users', (req, res) => {
   const { email, password, name, tel, siteName } = req.body
   const id = router.db.get('users').size().value() + 1
 

@@ -9,7 +9,7 @@ import { saveUserToken, deleteUserToken } from '../lib/user-token'
 deleteUserToken()
 
 const router = useRouter()
-let email = ref('')
+let email = ref('user1')
 let password = ref('123456')
 
 let loginFailed = ref(false)
@@ -17,7 +17,7 @@ let loginFailed = ref(false)
 async function login() {
   loginFailed.value = false
 
-  const response = await fetch('http://localhost:3000/login', {
+  const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -79,7 +79,7 @@ async function login() {
   </form>
 
   <div class="link-to-create-account">
-    <span>Ainda não tem conta? <a href="/">Cadastre-se</a></span>
+    <span>Ainda não tem conta? <a href="/planos">Cadastre-se</a></span>
   </div>
 </template>
 

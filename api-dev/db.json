@@ -2,21 +2,13 @@
   "users": [
     {
       "id": 1,
-      "username": "user1",
+      "email": "user1",
       "password": "123456"
     },
     {
       "id": 2,
-      "username": "user2",
+      "email": "user2",
       "password": "abcdef"
-    },
-    {
-      "id": 3,
-      "email": "",
-      "password": "",
-      "name": "Diogo neves",
-      "tel": "",
-      "siteName": ""
     }
   ]
 }
