@@ -8,7 +8,7 @@ defineProps<{ subtitle?: string }>()
     <CompanyLogoCentered />
     <header class="header">
       <h2>
-        <strong>Você está muito próximo de mudar a forma de hospedar seu site</strong>
+        <strong>Você está muito próximo de mudar a forma de</strong>
         <span>hospedar seu site</span>
       </h2>
       <span v-if="subtitle" class="subtitle">{{ subtitle }}</span>
@@ -44,6 +44,8 @@ defineProps<{ subtitle?: string }>()
 
 .subtitle {
   font-size: 18px;
-  margin: 10px;
+  width: 100%;
+  display: inline-block;
+  margin: 20px 20px 0px 20px;
 }
 </style>
