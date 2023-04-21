@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import CompanyLogoCentered from './CompanyLogoCentered.vue'
-import { defineProps } from 'vue'
-
-const props = defineProps({
-  subtitle: String
-})
+defineProps<{ subtitle?: string }>()
 </script>
 
 <template>
