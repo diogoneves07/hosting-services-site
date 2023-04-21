@@ -5,11 +5,13 @@ import HostService from '@/components/HostService.vue'
 import NextToHostMessage from '@/components/NextToHostMessage.vue'
 import { getHostServiceSelected } from '@/lib/host-service'
 import { saveUserToken } from '@/lib/user-token'
+import { useUserStore } from '@/stores/user'
 
 import { reactive, toRaw } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const { setUser } = useUserStore()
 const hostService = getHostServiceSelected() || ''
 
 if (hostService.price === '') router.push('/')
@@ -29,10 +31,12 @@ async function signup() {
     body: JSON.stringify(toRaw(user))
   })
   const data = await response.json()
-  if (data.token) {
-    saveUserToken(data.token)
-    router.push('/dashboard')
-  }
+
+  if (!data.token) return
+
+  saveUserToken(data.token)
+  setUser({ username: user.name })
+  router.push('/dashboard')
 }
 </script>
 
