@@ -4,13 +4,19 @@ import CompanyLogoCentered from './CompanyLogoCentered.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { saveUserToken, deleteUserToken } from '../lib/user-token'
+import { useUserStore } from '../stores/user'
 
 // Auto logout
 deleteUserToken()
 
+const unauthorizedStatusCode = 401
+
 const router = useRouter()
-let email = ref('user1')
-let password = ref('123456')
+
+const { setUser } = useUserStore()
+
+let email = ref('johnd')
+let password = ref('m38rmF$')
 
 let loginFailed = ref(false)
 
@@ -21,18 +27,19 @@ async function login() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      email: email.value,
+      username: email.value,
       password: password.value
     })
   })
 
-  const data = await response.json()
+  if (response.status === unauthorizedStatusCode) {
+    loginFailed.value = true
+  } else {
+    const data = await response.json()
 
-  if (data.token) {
+    setUser({ username: email.value })
     saveUserToken(data.token)
     router.push('/dashboard')
-  } else {
-    loginFailed.value = true
   }
 }
 </script>
