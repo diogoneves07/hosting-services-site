@@ -8,6 +8,8 @@ e outras tão importantes quanto as mencionadas!
 
 - Cadastro do usuário após escolha do plano.
 
+> O Cadastro do usuário está disponível apenas na versão local, pois o fakestoreapi.com não permite o cadastro real do usuário.
+
 - Possibilidade de alterar o plano antes de concluir o cadastro.
 
 - Login | Conta do usuário.
