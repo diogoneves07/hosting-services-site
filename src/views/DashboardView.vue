@@ -2,9 +2,14 @@
 import CompanyLogoCentered from '@/components/CompanyLogoCentered.vue'
 import { getUserToken } from '../lib/user-token'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+
+const { getUser } = useUserStore()
+const user = getUser ?? { username: '~' }
+const firstChar = user.username[0].toUpperCase()
 
 if (getUserToken() === false) {
-  useRouter().push('/login')
+  useRouter().push('/')
 }
 </script>
 
@@ -14,12 +19,12 @@ if (getUserToken() === false) {
       <div class="logo">
         <CompanyLogoCentered img-height="50px" />
       </div>
-      <div class="account">D</div>
+      <div class="account">{{ firstChar }}</div>
     </div>
   </header>
   <div class="text">
     <header>
-      <h2>Olá Diogo Neves,</h2>
+      <h2>Olá {{ user.username }},</h2>
       <span>Seja bem vindo a sua conta de hospedagem.</span>
     </header>
     <CompanyLogoCentered class="media" img-height="400px" />
