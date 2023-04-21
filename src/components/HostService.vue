@@ -47,7 +47,10 @@ function onSelected() {
       ESCOLHER ESSE PLANO
     </DefaultButton>
 
-    <DefaultButton v-if="isSelected" class="toggle-service-btn" @click="() => router.push('/')"
+    <DefaultButton
+      v-if="isSelected"
+      class="toggle-service-btn"
+      @click="() => router.push('/planos')"
       >TROCAR PLANO
     </DefaultButton>
 
