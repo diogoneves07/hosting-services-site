@@ -12,9 +12,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const hostServicePrice = getHostServiceSelected() || ''
 
-if (hostServicePrice === '') {
-  router.push('/')
-}
+if (hostServicePrice === '') router.push('/')
 
 const user = reactive({
   email: '',
@@ -24,7 +22,7 @@ const user = reactive({
   siteName: ''
 })
 
-const signup = async () => {
+async function signup() {
   const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/users`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
