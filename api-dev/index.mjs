@@ -14,9 +14,9 @@ server.use(middlewares)
 server.use(jsonServer.bodyParser)
 
 server.post('/auth/login', (req, res) => {
-  const { email, password } = req.body
-  const user = router.db.get('users').find({ email, password }).value()
-  console.log(email, password)
+  const { username, password } = req.body
+  const user = router.db.get('users').find({ username, password }).value()
+  console.log(username, password)
   if (!user) {
     return res.status(401).json({ message: 'Invalid email or password' })
   }
@@ -26,10 +26,10 @@ server.post('/auth/login', (req, res) => {
 })
 
 server.post('/users', (req, res) => {
-  const { email, password, name, tel, siteName } = req.body
+  const { username, password, name, tel, siteName } = req.body
   const id = router.db.get('users').size().value() + 1
 
-  router.db.get('users').push({ id, email, password, name, tel, siteName }).write()
+  router.db.get('users').push({ id, username, password, name, tel, siteName }).write()
 
   const token = jwt.sign({ sub: id }, SECRET_KEY)
   return res.json({ token })
