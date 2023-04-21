@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const props = defineProps<{
+  title: string
   show?: boolean
   price?: string
   isPopular?: boolean
@@ -31,7 +32,9 @@ function onSelected() {
     <span v-if="isPopular" class="more-used">MAIS USADO</span>
     <span v-if="isSelected" class="more-used selected">PLANO ESCOLHIDO</span>
 
-    <VCardTitle> <h3 class="title">Hospedagem 1</h3> </VCardTitle>
+    <VCardTitle>
+      <h3 class="title">{{ title }}</h3>
+    </VCardTitle>
 
     <strong class="price">
       <span v-if="priceIsNumber">R$</span>{{ price }}<span v-if="priceIsNumber">/mês</span></strong

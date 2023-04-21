@@ -10,9 +10,9 @@ import { reactive, toRaw } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const hostServicePrice = getHostServiceSelected() || ''
+const hostService = getHostServiceSelected() || ''
 
-if (hostServicePrice === '') router.push('/')
+if (hostService.price === '') router.push('/')
 
 const user = reactive({
   email: '',
@@ -41,7 +41,11 @@ async function signup() {
 
   <div class="register">
     <div class="service-selected">
-      <HostService :price="hostServicePrice" :is-selected="true"></HostService>
+      <HostService
+        :title="hostService.title"
+        :price="hostService.price"
+        :is-selected="true"
+      ></HostService>
     </div>
 
     <form class="forms-layout form-register" @submit.prevent="signup">
